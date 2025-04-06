@@ -12,7 +12,7 @@ This tool ***will*** permanently destroy files. Use at your own risk.
 - Dry-run mode for safety checks
 - Cross-platform compatible (Windows/Linux/macOS)*
 
-* Currently only tested on Windows, will test on Linux soon.
+\* Currently only tested on Windows, will test on Linux soon.
 
 ## ❓ Purpose
 Deleting files does not actually erase the file. The operating system just marks the space as "available", the data is still there until new data overwrites it.
