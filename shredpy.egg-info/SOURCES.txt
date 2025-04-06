@@ -1,9 +1,0 @@
-README.md
-setup.py
-shredpy/__init__.py
-shredpy/main.py
-shredpy.egg-info/PKG-INFO
-shredpy.egg-info/SOURCES.txt
-shredpy.egg-info/dependency_links.txt
-shredpy.egg-info/entry_points.txt
-shredpy.egg-info/top_level.txt
