@@ -1,6 +1,10 @@
  # shredpy — A Simple Yet Effective File Shredder
 
 `shredpy` is a Python-based command-line tool that securely shreds files by overwriting them with multiple patterns and deleting them. Lightweight, no dependencies required.
+
+## ⚠️ WARNING ⚠️
+This tool ***will*** permanently destroy files. Use at your own risk.
+
 ## 🎛️ Features
 - Overwrite files with customizable number of passes
 - Supports patterns: `0x00`, `0xFF`, and random data (`os.urandom`)
