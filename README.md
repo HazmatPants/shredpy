@@ -1,14 +1,22 @@
  # shredpy — A Simple Yet Effective File Shredder
 
 `shredpy` is a Python-based command-line tool that securely shreds files by overwriting them with multiple patterns and deleting them. Lightweight, no dependencies required.
-## Features
+
+## ⚠️ WARNING ⚠️
+This tool ***will*** permanently destroy files. Use at your own risk.
+
+## 🎛️ Features
 - Overwrite files with customizable number of passes
 - Supports patterns: `0x00`, `0xFF`, and random data (`os.urandom`)
 - Verbose output for nerdy satisfaction
 - Dry-run mode for safety checks
 - Cross-platform compatible (Windows/Linux/macOS)
 
-## Installation
+## ❓ Purpose
+Deleting files does not actually erase the file. The operating system just marks the space as "available", the data is still there until new data overwrites it.
+With basic recovery tools (many of them free), someone could easily bring back those "deleted" files if they haven't been overwritten yet. This is a big risk for sensitive data—bank info, passwords, personal documents, etc. A shredder ensures no one can snoop through your old files.
+
+## 📥 Installation
 
 Clone it to your machine:
 ```bash
@@ -26,7 +34,7 @@ Then use it with:
 shredpy --help
 ```
 
-### Options
+### ⚙️ Options
 ```
 -h, --help            show this help message and exit
 -p, --passes PASSES   Number of times to pass the file through the shredder
@@ -42,8 +50,9 @@ shredpy --help
 ```bash
 shredpy -v -nc -p 100 -f file1.txt file2.mp4 file3.wav
 ```
+This shreds the 3 files in verbose mode, with no confirmation, and 100 passes.
 
-## Contributing
+## 🤝 Contributing
 If you'd like to contribute or modify `shredpy`, clone the repository and install it locally in editable mode:
 ```bash
 git clone https://github.com/HazmatPants/shredpy.git
@@ -57,3 +66,6 @@ If you have tests set up (e.g., using `pytest`), you can run them with:
 ```bash
 pytest
 ```
+
+## ⚖️ License
+`shredpy` is licensed under the GPL-2.0 license, check the [LICENSE](https://github.com/HazmatPants/shredpy/blob/main/LICENSE).
