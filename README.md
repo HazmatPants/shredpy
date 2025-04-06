@@ -44,6 +44,7 @@ shredpy --help
 -nc, --noconfirm      Do not ask for confirmation
 -d, --dryrun          Only show what would be shredded
 -v, --verbose         Enable verbose output
+-P, --pattern PATTERN Use a specific pattern
 ```
 
 ### Example usage
