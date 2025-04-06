@@ -26,6 +26,23 @@ Then use it with:
 shredpy --help
 ```
 
+### Options
+```
+-h, --help            show this help message and exit
+--passes PASSES       Number of times to pass the file through the shredder
+--files FILES [FILES ...]
+                      File(s) to shred
+--nodelete            Do not delete the file(s), only overwrite
+--noconfirm           Do not ask for confirmation
+--dryrun              Only show what would be shredded
+--verbose             Enable verbose output
+```
+
+### Example usage
+```bash
+shredpy --verbose --noconfirm --passes 100 --files file1.txt file2.mp4 file3.wav
+```
+
 ## Contributing
 If you'd like to contribute or modify `shredpy`, clone the repository and install it locally in editable mode:
 ```bash
