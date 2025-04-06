@@ -1,14 +1,26 @@
 import os
 import sys
 import argparse
+import random
 
+args = None
 shredded = 0
+patterns = {
+    "00": b"\x00",
+    "FF": b"\xFF",
+    "AA": b"\xAA",
+    "55": b"\x55",
+    "92": b"\x92",
+    "random": "random",  # os.urandom
+    "deadbeef": b"\xDE\xAD\xBE\xEF",
+    "feedface": b"\xFE\xED\xFA\xCE"
+}
 
 def shred(file):
     """
     Overwrites a file with random bytes, then (optionally) deletes it.
     """
-    global shredded
+    global shredded, patterns, args
     if args.dryrun:
         print(f"[Dry run] Would shred: {file}")
         shredded += 1
@@ -17,11 +29,22 @@ def shred(file):
     size = os.path.getsize(file)
     if args.verbose:
         print(f"Shredding {file} ({size} bytes) with {args.passes} passes...")
-    patterns = [b'\x00', b'\xFF', None]  # None = use os.urandom
     with open(file, "wb") as f:
         for i in range(args.passes):
-            pattern = patterns[i % len(patterns)]
-            if pattern is None:
+            if args.pattern is None:
+                pattern = random.choice(list(patterns.values()))
+            else:
+                if args.pattern in patterns:
+                    pattern = patterns[args.pattern]
+                else:
+                    print(f"{args.pattern} is not a valid pattern")
+                    args.pattern = None
+                    pattern = random.choice(list(patterns.values()))
+                    print("Valid patterns:")
+                    for i in range(len(patterns)):
+                        print(list(patterns.keys())[i])
+                    exit()
+            if pattern == "random":
                 f.write(os.urandom(size))
                 if args.verbose and i % max(1, args.passes // 10) == 0:
                     print(f"Pass {i + 1}/{args.passes} with pattern urandom")
@@ -40,6 +63,7 @@ def shred(file):
     shredded += 1
 
 def main():
+    global args
     parser = argparse.ArgumentParser()
     # define parameters
     # int
@@ -51,11 +75,11 @@ def main():
     parser.add_argument("-nc", "--noconfirm", action="store_true", help="Do not ask for confirmation")
     parser.add_argument("-d", "--dryrun", action="store_true", help="Only show what would be shredded")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
+    parser.add_argument("-P", "--pattern", type=str, help="Use a specific pattern")
 
     args = parser.parse_args()
     
     for file in args.files:
-        try:
             if args.noconfirm:
                 if args.verbose:
                     print(f"Skipped confirmation for {file} (noconfirm)")
@@ -72,10 +96,7 @@ def main():
                     shred(file)
                 else:
                     print(f"{file} not shredded")
-        except PermissionError as e:
-            print(f"Permission denied for {file} ({e})")
-        except Exception as e:
-            print(f"Error: {e}")
+
 
     if args.dryrun:
         print(f"{shredded} file(s) would be shredded")
