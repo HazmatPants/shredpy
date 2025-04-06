@@ -1,0 +1,2 @@
+[console_scripts]
+shredpy = shredpy.main:main

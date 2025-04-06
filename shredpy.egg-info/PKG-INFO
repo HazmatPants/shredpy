@@ -1,0 +1,34 @@
+Metadata-Version: 2.4
+Name: shredpy
+Version: 1.0
+Summary: A simple file shredder written in Python
+Home-page: https://github.com/HazmatPants/shredpy/
+Author: HazmatPants
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Description-Content-Type: text/markdown
+Dynamic: author
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: summary
+
+# shredpy â€” A Simple Yet Effective File Shredder
+
+`shredpy` is a Python-based command-line tool that securely shreds files by overwriting them with multiple patterns and optionally deleting them. Lightweight, no dependencies required.
+## Features
+- Overwrite files with customizable number of passes
+- Supports patterns: `0x00`, `0xFF`, and random data (os.urandom)
+- Optional file deletion
+- Verbose output for nerdy satisfaction
+- Dry-run mode for safety checks
+- Cross-platform compatible (Windows/Linux/macOS)
+
+## Installation
+
+```bash
+git clone https://github.com/HazmatPants/shredpy.git
+cd shredpy
+python3 shredpy.py --help
+```
