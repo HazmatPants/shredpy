@@ -34,7 +34,7 @@ Then use it with:
 shredpy --help
 ```
 
-### ⚙️ Options
+## ⚙️ Options
 ```
 -h, --help            show this help message and exit
 -p, --passes PASSES   Number of times to pass the file through the shredder
