@@ -2,19 +2,6 @@ import os
 import sys
 import argparse
 
-parser = argparse.ArgumentParser()
-# parameters
-# int
-parser.add_argument("--passes", type=int, help="Number of times to pass the file through the shredder", default=10000)
-# list
-parser.add_argument("--files", type=str, help="File(s) to shred", nargs="+", required=True)
-# bool
-parser.add_argument("--nodelete", action="store_true", help="Do not delete the file(s), only overwrite")
-parser.add_argument("--noconfirm", action="store_true", help="Do not ask for confirmation")
-parser.add_argument("--dryrun", action="store_true", help="Only show what would be shredded")
-parser.add_argument("--verbose", action="store_true", help="Enable verbose output")
-
-args = parser.parse_args()
 shredded = 0
 
 def shred(file):
@@ -53,6 +40,20 @@ def shred(file):
     shredded += 1
 
 def main():
+    parser = argparse.ArgumentParser()
+    # define parameters
+    # int
+    parser.add_argument("-p", "--passes", type=int, help="Number of times to pass the file through the shredder", default=10000)
+    # list
+    parser.add_argument("-f", "--files", type=str, help="File(s) to shred", nargs="+", required=True)
+    # bool
+    parser.add_argument("-nd", "--nodelete", action="store_true", help="Do not delete the file(s), only overwrite")
+    parser.add_argument("-nc", "--noconfirm", action="store_true", help="Do not ask for confirmation")
+    parser.add_argument("-d", "--dryrun", action="store_true", help="Only show what would be shredded")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Enable verbose output")
+
+    args = parser.parse_args()
+    
     for file in args.files:
         try:
             if args.noconfirm:
@@ -80,3 +81,6 @@ def main():
         print(f"{shredded} file(s) would be shredded")
     else:
         print(f"Shredded {shredded} file(s)")
+
+if __name__ == "__main__":
+    main()
