@@ -29,18 +29,18 @@ shredpy --help
 ### Options
 ```
 -h, --help            show this help message and exit
---passes PASSES       Number of times to pass the file through the shredder
---files FILES [FILES ...]
+-p, --passes PASSES   Number of times to pass the file through the shredder
+-f, --files FILES [FILES ...]
                       File(s) to shred
---nodelete            Do not delete the file(s), only overwrite
---noconfirm           Do not ask for confirmation
---dryrun              Only show what would be shredded
---verbose             Enable verbose output
+-nd, --nodelete       Do not delete the file(s), only overwrite
+-nc, --noconfirm      Do not ask for confirmation
+-d, --dryrun          Only show what would be shredded
+-v, --verbose         Enable verbose output
 ```
 
 ### Example usage
 ```bash
-shredpy --verbose --noconfirm --passes 100 --files file1.txt file2.mp4 file3.wav
+shredpy -v -nc -p 100 -f file1.txt file2.mp4 file3.wav
 ```
 
 ## Contributing
