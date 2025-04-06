@@ -66,3 +66,6 @@ If you have tests set up (e.g., using `pytest`), you can run them with:
 ```bash
 pytest
 ```
+
+## ⚖️ License
+`shredpy` is licensed under the GPL-2.0 license, check the [LICENSE](https://github.com/HazmatPants/shredpy/blob/main/LICENSE).
