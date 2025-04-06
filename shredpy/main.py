@@ -80,6 +80,7 @@ def main():
     args = parser.parse_args()
     
     for file in args.files:
+        try:
             if args.noconfirm:
                 if args.verbose:
                     print(f"Skipped confirmation for {file} (noconfirm)")
@@ -96,7 +97,8 @@ def main():
                     shred(file)
                 else:
                     print(f"{file} not shredded")
-
+        except Exception as e:
+            print(f"Error: {e}")
 
     if args.dryrun:
         print(f"{shredded} file(s) would be shredded")
