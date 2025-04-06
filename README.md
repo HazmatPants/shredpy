@@ -49,9 +49,9 @@ shredpy --help
 
 ### Example usage
 ```bash
-shredpy -v -nc -p 100 -f file1.txt file2.mp4 file3.wav
+shredpy -v -nc -p 100 -P deadbeef -f file1.txt file2.mp4 file3.wav
 ```
-This shreds the 3 files in verbose mode, with no confirmation, and 100 passes.
+This shreds the 3 files in verbose mode, with no confirmation, 100 passes, and using the `deadbeef` pattern (`b"\xDE\xAD\xBE\xEF"`).
 
 ## 🤝 Contributing
 If you'd like to contribute or modify `shredpy`, clone the repository and install it locally in editable mode:
